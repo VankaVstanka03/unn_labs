@@ -113,7 +113,7 @@ int main(int argc, char *argv) {
 	std::cout <<"Last: " << pr.back() << " and " <<"first: " << pr.front() << std::endl;
 	std::cout << "Maximum: " << pr.find_max() <<" Minimum: "<<pr.find_min()<< std::endl;
 	std::cout << "Last: " << pr.back() << " and " << "first: " << pr.front() << std::endl;
-	std::cout << strange_Fib(15) << std::endl;
+	std::cout << strange_Fib(30) << std::endl;
 	//SetConsoleCP(1251);
 	//SetConsoleOutputCP(1251);
 	//std::string user_input;
