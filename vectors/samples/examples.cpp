@@ -36,96 +36,68 @@ int strange_Fib(int n) {
 
 std::string Str_(std::string sentence) {
 	std::stack<char> res;
-	int count_of_square = 0;
-	int count_of_figure = 0;
-	int count_of_round = 0;
 	for (int i = 0; i < sentence.size(); i++) {
-		if (sentence[i] == '(' || sentence[i] == ')' || sentence[i] == '{' || sentence[i] == '}' || sentence[i] == '[' || sentence[i] == ']') {
-			res.push(sentence[i]);
-		}
-	}
-	while (!res.empty()) {
-		if (res.top() == '}') {
-			count_of_figure++;
-			res.pop();
-			if (!res.empty()) {
-				if (res.top() == '[' || res.top() == '(') {
-					return "Wrong sentence";
-				}
+		if (sentence[i] == '(')
+			res.push(')');
+		else if (sentence[i] == '[')
+			res.push(']');
+		else if (sentence[i] == '{')
+			res.push('}');
+		else if (sentence[i] == ')') {
+			if (!res.empty() && res.top() == sentence[i]) {
+				res.pop();
 			}
 			else {
 				return "Wrong sentence";
 			}
 		}
-		else if (res.top() == ')') {
-			count_of_round++;
-			res.pop();
-			if (!res.empty()) {
-				if (res.top() == '[' || res.top() == '{') {
-					return "Wrong sentence";
-				}
+		else if (sentence[i] == ']') {
+			if (!res.empty() && res.top() == sentence[i]) {
+				res.pop();
 			}
 			else {
 				return "Wrong sentence";
 			}
 		}
-		else if (res.top() == ']') {
-			count_of_square++;
-			res.pop();
-			if (!res.empty()) {
-				if (res.top() == '(' || res.top() == '{') {
-					return "Wrong sentence";
-				}
+		else if (sentence[i] == '}') {
+			if (!res.empty() && res.top() == sentence[i]) {
+				res.pop();
 			}
 			else {
 				return "Wrong sentence";
 			}
 		}
-		else if (res.top() == '(') {
-			count_of_round--;
-			res.pop();
-		}
-		else if (res.top() == '[') {
-			count_of_square--;
-			res.pop();
-		}
-		else if (res.top() == '{') {
-			count_of_figure--;
-			res.pop();
-		}
-
 	}
-	if (count_of_square == 0 && count_of_round == 0 && count_of_figure == 0) {
-		return "Correctly";
+	if (res.empty()) {
+		return "Correctly sentence";
 	}
-	else {
-		return "Wrong sentence";
-	}
+	return "Wrong sentence";
 }
 
-int main(int argc, char *argv) {
-	why_my_console_is_broken::my_queue pr;
-	pr.push(10);
-	pr.push(2);
-	pr.push(124);
-	pr.push(-9);
-	pr.push(70);
-	std::cout <<"Last: " << pr.back() << " and " <<"first: " << pr.front() << std::endl;
-	std::cout << "Maximum: " << pr.find_max() <<" Minimum: "<<pr.find_min()<< std::endl;
-	std::cout << "Last: " << pr.back() << " and " << "first: " << pr.front() << std::endl;
-	std::cout << strange_Fib(30) << std::endl;
+int main(int argc, char *argv[]) {
+	//why_my_console_is_broken::my_queue pr;
+	//pr.push(10);
+	//pr.push(2);
+	//pr.push(124);
+	//pr.push(-9);
+	//pr.push(70);
+	//std::cout <<"Last: " << pr.back() << " and " <<"first: " << pr.front() << std::endl;
+	//std::cout << "Maximum: " << pr.find_max() <<" Minimum: "<<pr.find_min()<< std::endl;
+	//std::cout << "Last: " << pr.back() << " and " << "first: " << pr.front() << std::endl;
+	//std::cout << strange_Fib(30) << std::endl;
 	//SetConsoleCP(1251);
 	//SetConsoleOutputCP(1251);
-	//std::string user_input;
-	////user_input = argv;
-	//for (int i = 0; i < argc; i++) {
-	//	user_input.push_back(argv[i]);
-	//	std::cout << "Argument " << i << " : " << user_input[i] << std::endl;
-	//	//std::cout << "\n";
-	//	//std::cout << Str_(user_input) << std::endl;
-	//}
+	std::string user_input;
+	//user_input = argv;
+	for (int i = 1; i < argc; i++) {
+		std::cout << "Argument " << i << " : " << argv[i] << std::endl;
+		user_input = argv[i];
+		std::cout << Str_(user_input) << std::endl;
+		//std::cout << "\n";
+		//std::cout << Str_(user_input) << std::endl;
+	}
 	
-	//std::cin >> user_input;
+	//std::cout << user_input;
 	//std::cout << "\n" << user_input << std::endl;
 	//std::cout << Str_(user_input) << std::endl;
 
