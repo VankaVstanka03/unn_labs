@@ -75,27 +75,27 @@ std::string Str_(std::string sentence) {
 }
 
 int main(int argc, char *argv[]) {
-	//why_my_console_is_broken::my_queue pr;
-	//pr.push(10);
-	//pr.push(2);
-	//pr.push(124);
-	//pr.push(-9);
-	//pr.push(70);
-	//std::cout <<"Last: " << pr.back() << " and " <<"first: " << pr.front() << std::endl;
-	//std::cout << "Maximum: " << pr.find_max() <<" Minimum: "<<pr.find_min()<< std::endl;
-	//std::cout << "Last: " << pr.back() << " and " << "first: " << pr.front() << std::endl;
+	why_my_console_is_broken::my_queue pr;
+	pr.push(10);
+	pr.push(2);
+	pr.push(124);
+	pr.push(-9);
+	pr.push(70);
+	std::cout <<"Last: " << pr.back() << " and " <<"first: " << pr.front() << std::endl;
+	std::cout << "Maximum: " << pr.find_max() <<" Minimum: "<<pr.find_min()<< std::endl;
+	std::cout << "Last: " << pr.back() << " and " << "first: " << pr.front() << std::endl;
 	//std::cout << strange_Fib(30) << std::endl;
 	//SetConsoleCP(1251);
 	//SetConsoleOutputCP(1251);
-	std::string user_input;
+	//std::string user_input;
 	//user_input = argv;
-	for (int i = 1; i < argc; i++) {
-		std::cout << "Argument " << i << " : " << argv[i] << std::endl;
-		user_input = argv[i];
-		std::cout << Str_(user_input) << std::endl;
-		//std::cout << "\n";
-		//std::cout << Str_(user_input) << std::endl;
-	}
+	//for (int i = 1; i < argc; i++) {
+	//	std::cout << "Argument " << i << " : " << argv[i] << std::endl;
+	//	user_input = argv[i];
+	//	std::cout << Str_(user_input) << std::endl;
+	//	//std::cout << "\n";
+	//	//std::cout << Str_(user_input) << std::endl;
+	//}
 	
 	//std::cout << user_input;
 	//std::cout << "\n" << user_input << std::endl;
