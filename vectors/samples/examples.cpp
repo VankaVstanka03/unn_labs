@@ -81,6 +81,12 @@ int main(int argc, char *argv[]) {
 	pr.push(124);
 	pr.push(-9);
 	pr.push(70);
+	pr.pop();
+	pr.pop();
+	pr.push(400);
+	pr.push(-15);
+	pr.pop();
+	pr.push(55);
 	std::cout <<"Last: " << pr.back() << " and " <<"first: " << pr.front() << std::endl;
 	std::cout << "Maximum: " << pr.find_max() <<" Minimum: "<<pr.find_min()<< std::endl;
 	std::cout << "Last: " << pr.back() << " and " << "first: " << pr.front() << std::endl;

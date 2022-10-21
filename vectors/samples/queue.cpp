@@ -16,11 +16,17 @@
 				this->put.push(k);
 
 			}
+			else {
+				this->put.push(k);
+			}
 		}
 	}
 
 	void why_my_console_is_broken::my_queue::pop(){
-		if (!this->put.empty()) {
+		if (this->pull_out.empty() && this->put.empty()) {
+			throw std::exception("Empty queue");
+		}
+		if (this->pull_out.empty()) {
 			while (!this->put.empty()) {
 				this->pull_out.push(this->put.top());
 				this->put.pop();
@@ -32,14 +38,15 @@
 				this->Min.pop();
 			}
 			this->pull_out.pop();
-			while (!this->pull_out.empty()) {
-				this->put.push(this->pull_out.top());
-				this->pull_out.pop();
-			}
-
 		}
 		else {
-			throw std::exception("trying to pop empty queue");
+			if (this->pull_out.top() == this->Max.top()) {
+				this->Max.pop();
+			}
+			else if (this->pull_out.top() == this->Min.top()) {
+				this->Min.pop();
+			}
+			this->pull_out.pop();
 		}
 		
 
@@ -47,29 +54,36 @@
 
 	int why_my_console_is_broken::my_queue::front(){
 		int res;
-		if (!this->put.empty()) {
+		if (this->pull_out.empty() && this->put.empty()) {
+			throw std::exception("Empty queue");
+		}
+		if (!this->pull_out.empty()) {
+			res = this->pull_out.top();
+			return res;
+		}
+		else {
 			while (!this->put.empty()) {
 				this->pull_out.push(this->put.top());
 				this->put.pop();
 			}
 			res = this->pull_out.top();
-			while (!this->pull_out.empty()) {
-				this->put.push(this->pull_out.top());
-				this->pull_out.pop();
-			}
 			return res;
-		}
-		else {
-			throw std::exception("trying to pop empty queue");
 		}
 	}
 
 	int why_my_console_is_broken::my_queue::back(){
+		if (this->pull_out.empty() && this->put.empty()) {
+			throw std::exception("Empty queue");
+		}
 		if(!this->put.empty()){
 			return this->put.top();
 		}
 		else {
-			throw std::exception("trying to get non-existing elem in queue (because it's empty)");
+			while (!this->pull_out.empty()) {
+				this->put.push(this->pull_out.top());
+				this->pull_out.pop();
+			}
+			return this->put.top();
 		}
 	}
 
